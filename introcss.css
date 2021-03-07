@@ -1,0 +1,127 @@
+body {
+  background-image: url('1169815.jpg');
+  background-size:cover;
+}
+.navbar-brand{ 
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 28px;
+
+}
+.navbar-dark .navbar-nav .nav-link{
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+
+}
+.navbar-dark .navbar-nav .nav-item{
+    margin: 0 15px;
+}
+
+
+  
+  .output {
+    text-align:center;
+    font-family: 'Source Code Pro', monospace;
+    color:white;
+    h1 {
+      font-size:30px;
+    }
+  }
+  
+  /* Cursor Styling */
+  
+  .cursor::after {
+    content:'';
+    display:inline-block;
+    margin-left:3px;
+    background-color:white;
+    animation-name:blink;
+    animation-duration:0.5s;
+    animation-iteration-count: infinite;
+  }
+  h1.cursor::after {
+    height:24px;
+    width:13px;
+  }
+  p.cursor::after {
+    height:13px;
+    width:6px;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity:1;
+    }
+    49% {
+      opacity:1;
+    }
+    50% {
+      opacity:0;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  .flex-parent {
+    display: flex;
+  }
+  
+  .jc-center {
+    justify-content: center;
+  }
+  
+  .flex-parent {
+    display: flex;
+  }
+  
+  .jc-center {
+    justify-content: center;
+  }
+  
+  
+  
+  .maindiv1 button{
+    background-color:  rgba(32, 28, 28, 0.5);
+    color:white; 
+    border: 2px solid black;
+  text-decoration: none;
+  font-size:large;
+    font-weight:500;
+    border-radius: 5px;
+    padding: 15px;
+    display:inline-block;
+    width: 300px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
+  
+  .maindiv1 button:hover {
+    background-color: #4CAF50;
+    color:black;
+   
+    cursor: pointer;
+  }
+  .maindiv2 button{
+    background-color: rgba(32, 28, 28, 0.5); 
+    color: white; 
+    text-decoration: none;
+    font-size:large;
+    font-weight:500;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    display:inline-block;
+    width: 300px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
+  
+  .maindiv2 button:hover {
+    background-color:red;
+    color: black;
+   
+    cursor: pointer;
+  }

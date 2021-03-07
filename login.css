@@ -1,0 +1,49 @@
+body{
+    background: url('78914.jpg');
+    background-size: cover;
+    }
+    .navbar-brand{ 
+        font-weight: bold;
+        font-family: monospace;
+        font-size: 28px;
+    
+    }
+    .navbar-dark .navbar-nav .nav-link{
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+    
+    }
+    .navbar-dark .navbar-nav .nav-item{
+        margin: 0 15px;
+    }
+
+
+
+    .loginbox{
+        width: 350px;
+        height: 300px;
+        background: rgba(32, 28, 28, 0.5);
+        color: #fff;
+        top: 40%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+
+      }
+.maindiv input{
+    width:80%;
+display: block;
+padding: 10px;
+margin-left: auto;
+margin-right:auto;
+
+}
+.maindiv button{
+    width:80%;
+    margin-left:36px
+}
+h1{
+    text-align:center;
+}
