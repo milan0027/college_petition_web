@@ -47,3 +47,26 @@ margin-right:auto;
 h1{
     text-align:center;
 }
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDsLBGcVs4LyGKfLyTcE9dq8LSBZ-5nDzo",
+    authDomain: "petism1.firebaseapp.com",
+    projectId: "petism1",
+    storageBucket: "petism1.appspot.com",
+    messagingSenderId: "102995564729",
+    appId: "1:102995564729:web:a9c0dff2756ee94e212368",
+    measurementId: "G-G5Q4KGV1WG"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>

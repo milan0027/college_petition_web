@@ -23,7 +23,3 @@ function logout(){
   firebase.auth().signOut();
 }
 
-function login1(){
- 
-  window.location.replace("GameBase.html");
-}
