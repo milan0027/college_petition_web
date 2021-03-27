@@ -7,7 +7,7 @@ form.addEventListener('submit', e => {
     let date = new Date();
 let time = date.getTime();
 let counter = time;
-    let id =counter;
+    let id = 1e14-counter;
     
     auth.onAuthStateChanged(user => {
         var userI=firebase.auth().currentUser.uid;
@@ -23,7 +23,7 @@ let counter = time;
                 downvote: 0,
                 uname: fname,
                 admno: ad,
-                times: firebase.firestore.FieldValue.serverTimestamp(),
+                times: time,
                 dept: dept,
             })}).then(() => {
                 console.log('petis added');
