@@ -80,11 +80,15 @@ nav ul li a{
     max-width: 500px;
    max-height: fit-content;
     padding: 10px;
-   
+   transition: transform .2s;
     background-color: #e4e4e4;
     margin: 10px;
     font-size: 14px;
     font-weight: 600;
+}
+.peti-box:hover{
+transform:scale(1.1);
+
 }
 .yesname{
     text-transform: uppercase;
@@ -92,20 +96,46 @@ nav ul li a{
     font-size: large;
 }
 .yespet{
-    font-family: sans-serif;
-    font-size: medium;
+    font-family: "Comic Sans MS";
+    font-size:medium;
+    font-weight: 525;
 
+}
+.yestag{
+   display: inline;
+
+}
+.yestag2{
+   padding: 5px;
 }
 
 .bttn {
     color:purple;
-    border: hidden;
-   
+   border:hidden;
+   transition: transform 0.2s;
     cursor: pointer;
     font-size: 20px;
     display: inline-block;
     margin: 0 auto;
+    background-color: #e4e4e4;
 } 
 
-
-
+.bttn1:hover{
+    color:#2054ff;
+   
+   transform: scale(1.4);
+}
+.bttn2:hover{
+    color:#c21111;
+   
+   transform: scale(1.4);
+}
+.fa:visited{
+    color:black;
+    font-size: 28px;
+   
+   
+}
+.btndpv{
+    margin-left:20px;
+}
