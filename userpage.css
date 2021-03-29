@@ -21,11 +21,12 @@ body{
     margin-right: 8px;
 }
 #navi{
-    margin: 0 10px;
+ margin:0 50px;
+
 }
 #navi1{
     margin:0 -20px;
-    margin-right:60px;
+    margin-right:30px;
 }
 
 
@@ -40,13 +41,23 @@ body{
     
     transition: 0.6s;
 }
+#ulmar{
+    padding-top: 50px;
+}
 nav ul li{
     list-style: none;
-    margin: 50px 20px;
+    margin: 50px 0px;
 }
 nav ul li a{
     text-decoration: none;
     color: aliceblue;
+}
+nav ul li a:hover{
+    text-decoration: none;
+    color:orangered;
+}
+nav ul li a .fa{
+    margin-right: 8px;
 }
 #menuBtn{
     width: 50px;
@@ -57,7 +68,37 @@ nav ul li a{
     cursor: pointer;
     
 }
+#button1{
+    width: 250px;
+    position: fixed;
+    left: 45px;
+    top: 75px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 17px;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: transform .5s;
+    
+   
+}
+#button1:hover{
+    backface-visibility: hidden;
+    transform: translateZ(0) scale(1.1);
+}
+#sideNav1{
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    left: -350px;
+    top: 0;
+    background: black;
+    
+    transition: 0.6s;
 
+}
 
 
 
@@ -86,10 +127,7 @@ nav ul li a{
     font-size: 14px;
     font-weight: 600;
 }
-.peti-box:hover{
-transform:scale(1.1);
 
-}
 .yesname{
     text-transform: uppercase;
     font-weight:bold;
@@ -138,4 +176,49 @@ transform:scale(1.1);
 }
 .btndpv{
     margin-left:20px;
+}
+#exampleFormControlTextarea1{
+    margin-top: 130px;
+    margin-left: 10px;
+    max-width: 330px;
+}
+#deprt{
+    font-family:"Comic Sans MS";
+    font-size:medium;
+    font-weight: 525;
+    max-width: 330px;
+    margin-left: 10px;
+
+    
+}
+#postbtn{
+    width: 330px;
+    margin-left: 10px;
+    margin-top: -8px;
+    border: 2px black;
+    background-color:purple;
+    border-radius: 20px;
+    
+}
+#postbtn:hover{
+background-color: orangered;
+border: 2px black;
+
+}
+.fb{
+    transition: transform 0.2s;
+
+}
+.fb:hover{
+    transform: scale(1.1);
+    background-color: #e4e4e4;
+}
+.sharediv:hover{
+    color: orangered;
+}
+#staticBackdropLabel{
+    color: purple;
+}
+.sharediv .modal-footer .btn{
+    background-color:purple;
 }

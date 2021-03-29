@@ -5,6 +5,7 @@ function renderData(individualDoc) {
 
     let parentDiv = document.createElement("div");
     parentDiv.className = "container peti-box";
+   parentDiv.id=individualDoc.id
     parentDiv.setAttribute('data-id', individualDoc.id);
 
     let yname = document.createElement("div");
@@ -54,16 +55,24 @@ function renderData(individualDoc) {
     j.className="fa fa-thumbs-up bttn1";
     let k=document.createElement("i");
     k.className="fa fa-thumbs-down bttn2";
-    let iup=document.createElement("input");
-    iup.setAttribute("type", "number");
-    iup.setAttribute("value",individualDoc.data().upvote );
-
+   
 
     let trash = document.createElement("button");
-    trash.className="bttn";
+    trash.className="bttn btndpv";
     let i = document.createElement("i");
     i.className = "fa fa-trash bttn3";
     
+    let share=document.createElement("div");
+    share.className="bttn btndpv sharediv";
+    
+
+    share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div><div class="modal-body"><a href="#"> <img src="icons8-facebook-48.png" class="fb"alt="facebook" style="width: 48px; height: 48px;"></a> <a href="#"> <img src="icons8-twitter-circled-48.png" class="fb" alt="twitter" style="width: 48px; height: 48px;"></a> <a href="#"> <img src="icons8-linkedin-48.png" class="fb" alt="linkedin" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
+
+   
+   
+
+
+
    
    ub.appendChild(j);
     trash.appendChild(i);
@@ -79,11 +88,12 @@ function renderData(individualDoc) {
     parentDiv.appendChild(ub);
     parentDiv.appendChild(dpv);
     parentDiv.appendChild(dv);
+    parentDiv.appendChild(share);
    
     parentDiv.appendChild(trash);
 
    
-    petti.appendChild(parentDiv);
+    petti.insertBefore(parentDiv,petti.childNodes[0]);
 
 
     ub.addEventListener('click', e=> {
@@ -166,6 +176,44 @@ function renderData(individualDoc) {
         })
     })
 }
+
+const form = document.getElementById('form');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    const petis = form['exampleFormControlTextarea1'].value;
+    const dept = form['deprt'].value;
+    let date = new Date();
+let time = date.getTime();
+let counter = time;
+    let id =counter;
+    form.reset();
+    
+    auth.onAuthStateChanged(user => {
+        var userI=firebase.auth().currentUser.uid;
+        if (user) {
+            db.ref('Users/'+userI).once('value').then(function(snapshot){
+                var fname=(snapshot.val() && snapshot.val().Username);
+                var ad=(snapshot.val() && snapshot.val().admissionno);
+               
+            fs.collection("petitions").doc('_' + id).set({
+                id: '_' + id,
+                petis,
+                upvote: 0,
+                downvote: 0,
+                uname: fname,
+                admno: ad,
+                times: time,
+                dept: dept,
+            })}).then(() => {
+               console.log('petis added');
+            }).catch(err => {
+                console.log(err.message);
+            })
+        }
+    })
+    sideNav1.style.left = "-350px";
+})
 auth.onAuthStateChanged(user => {
     if (user) {
         fs.collection("petitions").onSnapshot((snapshot) => {

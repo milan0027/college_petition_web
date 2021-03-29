@@ -18,7 +18,35 @@
 	
 </head>   
 <body>
+	<nav id="sideNav">
+		<ul id="ulmar">
+			<li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>My Profile</a></li>
+			<li><a href="#"><i class="fa fa-align-left" aria-hidden="true"></i>My Petitions</a></li>
+			<li><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i>Administration Info</a></li>
+			<li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i>Privacy Settings</a></li>
+			<li><a href="login.html"><i class="fa fa-power-off" aria-hidden="true"></i>Log Out</a></li>
+			
+			
+		</ul>
+</nav>
+	<nav id="sideNav1">
+		<div class="mb-3">
+			<form autocomplete="off" class="form-group" id="form">
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Write Here..."></textarea>
+		</div>
+		  <select class="form-select" id="deprt" aria-label="Default select example">
+			<option   selected value="0" disabled>Tag concerned Authority</option>
+			<option  value="1">Academics</option>
+			<option value="2">Sports</option>
+			<option value="3">Library</option>
+			<option value="4">Hostel</option>
+			<option value="5">Mess</option>
+		   
+		  </select> <br>
+		<button type="submit" id="postbtn" class="btn btn-success btn-block">POST <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+		</form>
 	
+	</nav>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
 		  <a class="navbar-brand" href="#">PetISM |</a>
@@ -32,13 +60,8 @@
 				<li id="navi" class="nav-item">
 					<a class="nav-link active" aria-current="page" href="#"><i class="fa fa-home" aria-hidden="true"></i>home page |</a>
 				  </li>
-			  <li id="navi" class="nav-item">
-				<a class="nav-link" aria-current="page" href="petition.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Write a Petition |</a>
-			  </li>
 	
-			  <li id="navi" class="nav-item">
-				<a class="nav-link active" aria-current="page" href="#">Welcome,</a>
-			  </li>
+			 
 			  <li id="navi1" class="nav-item">
 				<a class="nav-link active" aria-current="page" id="fname"></a>
 			  </li>
@@ -57,18 +80,12 @@
     </div>
              
 	
-	<nav id="sideNav">
-	<ul>
-		<li><a href="#">My Profile</a></li>
-		<li><a href="#">Administration Info</a></li>
-		<li><a href="#">My Petitions</a></li>
-		<li><a href="login.html">Log Out</a></li>
-		<li><a href="#">Delete Account</a></li>
-		
-	</ul>
-</nav>
+	
 <img src="menubar.jpg" id="menuBtn">
 
+<div>
+<button id="button1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> WRITE A PETITION</button>
+</div>
 
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -123,13 +140,27 @@
 		}
 	}
 </script>
+<script>
+	var button1 = document.getElementById("button1");
+	var sideNav1 = document.getElementById("sideNav1");
+
+	sideNav1.style.left = "-350px";
+	button1.onclick = function(){
+		if(sideNav1.style.left == "-350px"){
+			sideNav1.style.left = "0px";
+		}
+		else{
+			sideNav1.style.left = "-350px";
+		}
+	}
+</script>
 <script type="text/javascript">
 	var userId=localStorage.getItem('id');
 	firebase.database().ref('Users/'+userId).once('value').then(function(snapshot){
 	 var fname=(snapshot.val() && snapshot.val().Username);
 	
    
-	 document.getElementById('fname').innerHTML=fname;
+	 document.getElementById('fname').innerHTML="Welcome, "+fname;
 	 
 	});
 	</script>
