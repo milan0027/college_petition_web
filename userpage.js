@@ -5,8 +5,11 @@ function renderData(individualDoc) {
 
     let parentDiv = document.createElement("div");
     parentDiv.className = "container peti-box";
-   parentDiv.id=individualDoc.id
+  parentDiv.id=individualDoc.id;
     parentDiv.setAttribute('data-id', individualDoc.id);
+
+   
+   
 
     let yname = document.createElement("div");
     yname.className="yesname yestag";
@@ -51,11 +54,37 @@ function renderData(individualDoc) {
 
     let dv= document.createElement("button");
     dv.className="bttn";
+
+
+
+
+
     let j=document.createElement("i");
-    j.className="fa fa-thumbs-up bttn1";
+    var userlol=firebase.auth().currentUser.uid;
+    var docRef =fs.collection("petitions").doc(individualDoc.id).collection("likes").doc(userlol)
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            j.className="fa fa-thumbs-up bttn1 bttn4";
+        } else {
+            j.className="fa fa-thumbs-up bttn1";
+        }
+    })
+    
+
+
+
+
+
     let k=document.createElement("i");
-    k.className="fa fa-thumbs-down bttn2";
-   
+    var docRef2 =fs.collection("petitions").doc(individualDoc.id).collection("dislikes").doc(userlol)
+    docRef2.get().then((doc) => {
+        if (doc.exists) {
+            k.className="fa fa-thumbs-down bttn2 bttn5";
+        } else {
+            k.className="fa fa-thumbs-down bttn2";
+        }
+    })
+  
 
     let trash = document.createElement("button");
     trash.className="bttn btndpv";
@@ -76,6 +105,7 @@ function renderData(individualDoc) {
    
    ub.appendChild(j);
     trash.appendChild(i);
+  
     parentDiv.appendChild(yname);
     parentDiv.appendChild(der);
     parentDiv.appendChild(tim);
@@ -103,17 +133,61 @@ function renderData(individualDoc) {
         let id1 = e.target.parentElement.parentElement.getAttribute('data-id');
         var upref = fs.collection("petitions").doc(id1);
 
-        
+        if(  parentDiv.querySelector(".bttn1").classList.contains("bttn4"))
+        {
+            upref.update({
+                upvote: firebase.firestore.FieldValue.increment(-1)
+            });
+
+        }
+        else{
         upref.update({
             upvote: firebase.firestore.FieldValue.increment(1)
         });
-        
+    }
         
     })
     ub.addEventListener('click', e=> {
+        let id5 = e.target.parentElement.parentElement.getAttribute('data-id');
+        if(  parentDiv.querySelector(".bttn1").classList.contains("bttn4"))
+        {
+            parentDiv.querySelector(".btnupv").innerText=parseInt(upv.innerText)-1;
+            parentDiv.querySelector(".bttn1").classList.remove("bttn4");
 
+            auth.onAuthStateChanged(user => {
+                var userk=firebase.auth().currentUser.uid;
+                if (user) {
+                  
+                       
+                    fs.collection("petitions").doc(id5).collection("likes").doc(userk).delete().then(() => {
+                        console.log("Document successfully deleted!");
+                    }).catch((error) => {
+                        console.error("Error removing document: ", error);
+                    });
+                }
+            })         
+        }
+
+        else
+        {
         parentDiv.querySelector(".btnupv").innerText=parseInt(upv.innerText)+1;
-       
+        parentDiv.querySelector(".bttn1").classList.add("bttn4");
+
+        auth.onAuthStateChanged(user => {
+            var userL=firebase.auth().currentUser.uid;
+            if (user) {
+              
+                   
+                fs.collection("petitions").doc(id5).collection("likes").doc(userL).set({
+                  userLi: userL,
+                }).then(() => {
+                   console.log('likeduser uid added');
+                }).catch(err => {
+                    console.log(err.message);
+                })
+            }
+        })
+        }
        
 
         if(parseInt(upv.innerText)==5)
@@ -147,24 +221,59 @@ function renderData(individualDoc) {
     })
 
     dv.addEventListener('click', e=> {
-        
-       
-       
+         
         let id2 = e.target.parentElement.parentElement.getAttribute('data-id');
         var dpref = fs.collection("petitions").doc(id2);
 
-        
+        if(  parentDiv.querySelector(".bttn2").classList.contains("bttn5"))
+        {
+            dpref.update({
+                downvote: firebase.firestore.FieldValue.increment(-1)
+            });
+
+            parentDiv.querySelector(".btndpv").innerText=parseInt(dpv.innerText)-1;
+            parentDiv.querySelector(".bttn2").classList.remove("bttn5");
+
+            auth.onAuthStateChanged(user => {
+                var userk2=firebase.auth().currentUser.uid;
+                if (user) {
+                  
+                       
+                    fs.collection("petitions").doc(id2).collection("dislikes").doc(userk2).delete().then(() => {
+                        console.log("Document successfully deleted!");
+                    }).catch((error) => {
+                        console.error("Error removing document: ", error);
+                    });
+                }
+            })         
+
+        }
+        else{
         dpref.update({
             downvote: firebase.firestore.FieldValue.increment(1)
         });
-        
-        
-    })
-    dv.addEventListener('click', e=> {
 
         parentDiv.querySelector(".btndpv").innerText=parseInt(dpv.innerText)+1;
-      
+        parentDiv.querySelector(".bttn2").classList.add("bttn5");
 
+        auth.onAuthStateChanged(user => {
+            var userL2=firebase.auth().currentUser.uid;
+            if (user) {
+              
+                   
+                fs.collection("petitions").doc(id2).collection("dislikes").doc(userL2).set({
+                  userLi2: userL2,
+                }).then(() => {
+                   console.log('dislikeduser uid added');
+                }).catch(err => {
+                    console.log(err.message);
+                })
+            }
+        })
+    }
+      
+        
+        
     })
 
     trash.addEventListener('click', e => {
