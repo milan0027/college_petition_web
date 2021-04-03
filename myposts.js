@@ -43,22 +43,22 @@ function renderData(individualDoc) {
     petDiv.className="yespet";
 
     let upv= document.createElement("div");
-    upv.className="bttn btnupv";
+    upv.className="bttn btnupv bttnx";
     var upt=individualDoc.data().upvote;
     upv.innerText=upt;
 
    
     let dpv= document.createElement("div");
-    dpv.className="bttn btndpv";
+    dpv.className="bttn btndpv bttnx";
     var dpt=individualDoc.data().downvote;
     dpv.innerText=dpt;
    
     let ub=document.createElement("button");
-    ub.className="bttn btncl";
+    ub.className="bttn btncl bttnx";
    
 
     let dv= document.createElement("button");
-    dv.className="bttn";
+    dv.className="bttn bttnx";
 
 
     let j=document.createElement("i");
@@ -86,6 +86,7 @@ function renderData(individualDoc) {
 
     let trash = document.createElement("button");
     trash.className="bttn btndpv";
+   
     let i = document.createElement("i");
     i.className = "fa fa-trash bttn3";
     
@@ -101,7 +102,7 @@ function renderData(individualDoc) {
 
 
    let share=document.createElement("div");
-    share.className="bttn btndpv sharediv";
+    share.className=" wrapper bttnx";
     
   
 
@@ -109,8 +110,14 @@ function renderData(individualDoc) {
 
 
 
-   share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div> <div class="modal-body"><a href='+tweet+'><img src="icons8-twitter-circled-48.png" class="fb fbtw" alt="twitter" style="width: 48px; height: 48px;"></a><a href='+wa+'><img src="icons8-whatsapp-48.png" class="fb fbwa" alt="whatsapp" style="width: 48px; height: 48px;"></a><a href='+tele+'><img src="icons8-telegram-app-48.png" class="fb fbte" alt="Telegram" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
+ share.innerHTML='<ul><li>share <i class="fa fa-share" aria-hidden="true"></i><ul><li ><a href='+tweet+'><button class="fb" ><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</button></a></li><li ><a href='+wa+'><button class="fb" ><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp</button></a></li><li ><a href='+tele+'><button class="fb" ><i class="fa fa-telegram" aria-hidden="true"></i> Telegram</button></a></li></ul></li></ul>';
+  
 
+
+
+
+
+   
    ub.appendChild(j);
     trash.appendChild(i);
   
@@ -126,11 +133,11 @@ function renderData(individualDoc) {
     parentDiv.appendChild(ub);
     parentDiv.appendChild(dpv);
     parentDiv.appendChild(dv);
-    parentDiv.appendChild(share);
+   
    
     parentDiv.appendChild(trash);
 
-   
+    parentDiv.appendChild(share);
     petti.insertBefore(parentDiv,petti.childNodes[0]);
 
 

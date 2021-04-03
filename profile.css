@@ -60,7 +60,7 @@ nav ul li a .fa{
     margin-right: 8px;
 }
 #menuBtn{
-    width: 50px;
+    width: 60px;
     position: fixed;
     right: 25px;
     top: 12px;
@@ -82,7 +82,8 @@ nav ul li a .fa{
    max-height: fit-content;
     padding: 10px;
    transition: transform .2s;
-    background-color: #e4e4e4;
+    background-color:black;
+    color: white;
     margin: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -94,8 +95,6 @@ nav ul li a .fa{
 }
 .peti-box:hover{
     transform: scale(1.1);
-    background-color:white;
-    -webkit-box-shadow: -8px 8px 62px 8px rgba(0,0,0,1);
-    -moz-box-shadow: -8px 8px 62px 8px rgba(0,0,0,1);
-    box-shadow: -8px 8px 62px 8px rgba(0,0,0,1);
+    color:orangered;
+   
 }

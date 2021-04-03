@@ -2,7 +2,6 @@ body{
     background:url(78914.jpg) repeat fixed;
     
     background-size: cover;
-
     
 }
 .navbar-brand{ 
@@ -60,7 +59,7 @@ nav ul li a .fa{
     margin-right: 8px;
 }
 #menuBtn{
-    width: 50px;
+    width: 60px;
     position: fixed;
     right: 25px;
     top: 12px;
@@ -68,6 +67,46 @@ nav ul li a .fa{
     cursor: pointer;
     
 }
+#button1{
+    width: 250px;
+    position: fixed;
+    left: 45px;
+    top: 75px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 17px;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: transform .5s;
+    
+   
+}
+#button1:hover{
+    backface-visibility: hidden;
+    transform: translateZ(0) scale(1.1);
+}
+#sideNav1{
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    left: -350px;
+    top: 0;
+    background: black;
+    
+    transition: 0.6s;
+
+}
+
+
+
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+}
+
 .peti-container {
     display: flex;
     flex-direction: column;
@@ -77,12 +116,12 @@ nav ul li a .fa{
 
 .peti-box {
   
-  
-    max-width: 500px;
+ 
+    max-width: 550px;
    max-height: fit-content;
     padding: 10px;
    transition: transform .2s;
-    background-color: #e4e4e4;
+    background-color:#e4e4e4;
     margin: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -92,18 +131,18 @@ nav ul li a .fa{
 .yesname{
     text-transform: uppercase;
     font-weight:bold;
-    font-size: large;
+    font-size: 21px;
 }
 .yespet{
     font-family: "Comic Sans MS";
-    font-size:medium;
+    font-size:20px;
     font-weight: 525;
 
 
 }
 .yestag{
-   display: inline;
-
+   display:inline;
+ 
 }
 .yestag2{
    padding: 5px;
@@ -114,41 +153,40 @@ nav ul li a .fa{
    border:hidden;
    transition: transform 0.2s;
     cursor: pointer;
-    font-size: 20px;
-    display: inline-block;
-    margin: 0 auto;
+    font-size: 30px;
+    margin-top: 0px;
+    
+   
     background-color: #e4e4e4;
 } 
-
+.bttnx{
+    display: inline-block;
+   
+}
 .bttn1:hover{
     color:#2054ff;
    
-/* transform: scale(1.4);*/
+
 }
 .bttn2:hover{
     color:#c21111;
    
-  /* transform: scale(1.4);*/
 }
 .bttn4{
     color:#2054ff;
    
-    transform: scale(1.4);
+    transform: scale(1.25);
 }
 .bttn5{
     color:#c21111;
    
-    transform: scale(1.4);
+    transform: scale(1.25);
 }
-.fa:visited{
-    color:black;
-    font-size: 28px;
-   
-   
-}
+
 .btndpv{
-    margin-left:20px;
+    margin-left:40px;
 }
+
 #exampleFormControlTextarea1{
     margin-top: 130px;
     margin-left: 10px;
@@ -179,18 +217,43 @@ border: 2px black;
 }
 .fb{
     transition: transform 0.2s;
-
+    width: 90px; height: 30px;
+    background-color: purple;
+    color: white;
+    border: 2px purple;
+font-size: 12.5px;
+    text-align:left;
 }
 .fb:hover{
-    transform: scale(1.1);
-    background-color: #e4e4e4;
+    background-color: black;
 }
-.sharediv:hover{
-    color: orangered;
+
+.wrapper{
+    width: 90px;
 }
-#staticBackdropLabel{
-    color: purple;
+.wrapper ul {
+    list-style: none;
+ 
 }
-.sharediv .modal-footer .btn{
-    background-color:purple;
+.wrapper ul li{
+    background: purple;
+    color:#fff;
+    width: 90px;
+ 
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+   
+    font-size: 15px;
+    
+    font-family: "comic sans ms";  
+   
+}
+.wrapper ul ul{
+   display: none;
+    list-style: none;
+}
+.wrapper ul li:hover > ul{
+    display: inline-flex;
 }

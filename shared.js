@@ -16,8 +16,9 @@ auth.onAuthStateChanged(user => {
     });
 }
     else {
-     alert('you are not logged in, kindly login again to continue');
+    
  location = "loginsh.html";
+ alert('you are not logged in, kindly login again to continue');
     }
 })
 
@@ -112,12 +113,7 @@ var deptmailid=["iitismdefault27@gmail.com","iitismacademics27@gmail.com","iitis
   
 
     
-    let share=document.createElement("div");
-    share.className="bttn btndpv sharediv";
-    
-
-    share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div><div class="modal-body"><a href="#"> <img src="icons8-facebook-48.png" class="fb"alt="facebook" style="width: 48px; height: 48px;"></a> <a href="#"> <img src="icons8-twitter-circled-48.png" class="fb" alt="twitter" style="width: 48px; height: 48px;"></a> <a href="#"> <img src="icons8-linkedin-48.png" class="fb" alt="linkedin" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
-
+   
    
    ub.appendChild(j);
     
@@ -134,7 +130,7 @@ var deptmailid=["iitismdefault27@gmail.com","iitismacademics27@gmail.com","iitis
     parentDiv.appendChild(ub);
     parentDiv.appendChild(dpv);
     parentDiv.appendChild(dv);
-    parentDiv.appendChild(share);
+  
    
    
    

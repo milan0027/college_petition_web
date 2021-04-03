@@ -60,7 +60,7 @@ nav ul li a .fa{
     margin-right: 8px;
 }
 #menuBtn{
-    width: 50px;
+    width: 60px;
     position: fixed;
     right: 25px;
     top: 12px;
@@ -78,7 +78,7 @@ nav ul li a .fa{
 .peti-box {
   
   
-    max-width: 500px;
+    max-width: 550px;
    max-height: fit-content;
     padding: 10px;
    transition: transform .2s;
@@ -92,11 +92,11 @@ nav ul li a .fa{
 .yesname{
     text-transform: uppercase;
     font-weight:bold;
-    font-size: large;
+    font-size: 21px;
 }
 .yespet{
     font-family: "Comic Sans MS";
-    font-size:medium;
+    font-size:20px;
     font-weight: 525;
 
 
@@ -114,9 +114,9 @@ nav ul li a .fa{
    border:hidden;
    transition: transform 0.2s;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 30px;
     display: inline-block;
-    margin: 0 auto;
+    margin-top: 15px;
     background-color: #e4e4e4;
 } 
 
@@ -133,12 +133,12 @@ nav ul li a .fa{
 .bttn4{
     color:#2054ff;
    
-    transform: scale(1.4);
+    transform: scale(1.25);
 }
 .bttn5{
     color:#c21111;
    
-    transform: scale(1.4);
+    transform: scale(1.25);
 }
 .fa:visited{
     color:black;
