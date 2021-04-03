@@ -1,0 +1,101 @@
+body{
+    background:url(78914.jpg) repeat fixed;
+    
+    background-size: cover;
+
+    
+}
+.navbar-brand{ 
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 28px;
+
+}
+.navbar-dark .navbar-nav .nav-link{
+    font-weight: 700;
+    font-size: 17px;
+    text-transform: uppercase;
+
+}
+.navbar-dark .navbar-nav .nav-link .fa{
+    margin-right: 8px;
+}
+#navi{
+ margin:0 50px;
+
+}
+#navi1{
+    margin:0 -20px;
+    margin-right:30px;
+}
+
+
+
+#sideNav{
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    right: -250px;
+    top: 0;
+    background: black;
+    
+    transition: 0.6s;
+}
+#ulmar{
+    padding-top: 50px;
+}
+nav ul li{
+    list-style: none;
+    margin: 50px 0px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: aliceblue;
+}
+nav ul li a:hover{
+    text-decoration: none;
+    color:orangered;
+}
+nav ul li a .fa{
+    margin-right: 8px;
+}
+#menuBtn{
+    width: 50px;
+    position: fixed;
+    right: 25px;
+    top: 12px;
+    
+    cursor: pointer;
+    
+}
+.peti-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.peti-box {
+  
+  
+    max-width: 600px;
+   max-height: fit-content;
+    padding: 10px;
+   transition: transform .2s;
+    background-color: #e4e4e4;
+    margin: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    font-family: sans-serif;
+    font-size:medium;
+    font-weight: 525;
+
+}
+.peti-box:hover{
+    transform: scale(1.1);
+    background-color:white;
+    -webkit-box-shadow: -8px 8px 62px 8px rgba(0,0,0,1);
+    -moz-box-shadow: -8px 8px 62px 8px rgba(0,0,0,1);
+    box-shadow: -8px 8px 62px 8px rgba(0,0,0,1);
+}

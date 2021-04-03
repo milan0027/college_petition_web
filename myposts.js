@@ -2,8 +2,16 @@ var depart=["None","Academics","Sports","Library","Hostel","Mess"];
 const petti = document.getElementById('peti-container');
 var deptmailid=["iitismdefault27@gmail.com","iitismacademics27@gmail.com","iitismsports27@gmail.com","iitismlibrary27@gmail.com","iitismhostel27@gmail.com","iitismmess27@gmail.com"];
 
-function renderData(individualDoc) {
 
+
+function renderData(individualDoc) {
+    auth.onAuthStateChanged(user => {
+        const userlol=auth.currentUser.uid;
+    var docR =fs.collection("petitions").doc(individualDoc.id).collection("owner").doc(userlol)
+    docR.get().then((doc) => {
+        if (doc.exists) {
+           
+      
     let parentDiv = document.createElement("div");
     parentDiv.className = "container peti-box";
     parentDiv.setAttribute('data-id', individualDoc.id);
@@ -54,7 +62,7 @@ function renderData(individualDoc) {
 
 
     let j=document.createElement("i");
-    var userlol=firebase.auth().currentUser.uid;
+  
     var docRef =fs.collection("petitions").doc(individualDoc.id).collection("likes").doc(userlol)
     docRef.get().then((doc) => {
         if (doc.exists) {
@@ -74,10 +82,16 @@ function renderData(individualDoc) {
             k.className="fa fa-thumbs-down bttn2";
         }
     })
+  
+
+    let trash = document.createElement("button");
+    trash.className="bttn btndpv";
+    let i = document.createElement("i");
+    i.className = "fa fa-trash bttn3";
     
     var urlt=window.location.href;
    
-    urlt=urlt.substring(0,urlt.length-13)+"shared.html%23";
+    urlt=urlt.substring(0,urlt.length-12)+"shared.html%23"+individualDoc.id;
 
     var tweet="https://twitter.com/share?url="+urlt;
     var wa="https://web.whatsapp.com/send?text="+urlt;
@@ -95,10 +109,10 @@ function renderData(individualDoc) {
 
 
 
-  share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div> <div class="modal-body"><a href='+tweet+'><img src="icons8-twitter-circled-48.png" class="fb fbtw" alt="twitter" style="width: 48px; height: 48px;"></a><a href='+wa+'><img src="icons8-whatsapp-48.png" class="fb fbwa" alt="whatsapp" style="width: 48px; height: 48px;"></a><a href='+tele+'><img src="icons8-telegram-app-48.png" class="fb fbte" alt="Telegram" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
+   share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div> <div class="modal-body"><a href='+tweet+'><img src="icons8-twitter-circled-48.png" class="fb fbtw" alt="twitter" style="width: 48px; height: 48px;"></a><a href='+wa+'><img src="icons8-whatsapp-48.png" class="fb fbwa" alt="whatsapp" style="width: 48px; height: 48px;"></a><a href='+tele+'><img src="icons8-telegram-app-48.png" class="fb fbte" alt="Telegram" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
 
    ub.appendChild(j);
-  
+    trash.appendChild(i);
   
     parentDiv.appendChild(yname);
     parentDiv.appendChild(der);
@@ -114,24 +128,11 @@ function renderData(individualDoc) {
     parentDiv.appendChild(dv);
     parentDiv.appendChild(share);
    
+    parentDiv.appendChild(trash);
+
    
     petti.insertBefore(parentDiv,petti.childNodes[0]);
 
-   /* share.addEventListener('click', e=> {
-
-        let id7 = e.target.parentElement.parentElement.getAttribute('data-id');
-        var upref = fs.collection("petitions").doc(id7);
-
-        var urlt=window.location.href;
-   
-        urlt=urlt.substring(0,urlt.length-13)+"shared.html%23";
-    
-        var tweet="https://twitter.com/share?url="+urlt;
-        var wa="https://web.whatsapp.com/send?text="+urlt;
-        var tele="https://telegram.me/share/url?url="+urlt;
-    share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div> <div class="modal-body"><a href='+tweet+'><img src="icons8-twitter-circled-48.png" class="fb fbtw" alt="twitter" style="width: 48px; height: 48px;"></a><a href='+wa+'><img src="icons8-whatsapp-48.png" class="fb fbwa" alt="whatsapp" style="width: 48px; height: 48px;"></a><a href='+tele+'><img src="icons8-telegram-app-48.png" class="fb fbte" alt="Telegram" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
-
-    })*/
 
     ub.addEventListener('click', e=> {
         
@@ -199,17 +200,15 @@ function renderData(individualDoc) {
 
        
            
-            let id3 = e.target.parentElement.parentElement.getAttribute('data-id');
-            var docRef = fs.collection("petitions").doc(id3);
+           
+            var docRef = fs.collection("petitions").doc(id5);
             docRef.get().then((doc) => {
            
             var name1=doc.data().uname;
             var dept1=parseInt(doc.data().dept);
             var petis1=doc.data().petis;
-    
             var upvotes1=doc.data().upvote;
-
-           var emailcnt=doc.data().emailct;
+            var emailcnt=doc.data().emailct;
             if(emailcnt==0&&upvotes1>=5)
             {
            
@@ -225,13 +224,14 @@ function renderData(individualDoc) {
                 .then(function (message) {
                   console.log("mail sent successfully");
                 });
+
                 docRef.update(
                     {
                         emailct:1,
                     }
                 )
             }
-        })
+            })
         
       
 
@@ -287,11 +287,25 @@ function renderData(individualDoc) {
                 })
             }
         })
-    }  
+    }
+      
+        
+        
+    })
+
+    trash.addEventListener('click', e => {
+        let id = e.target.parentElement.parentElement.getAttribute('data-id');
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                fs.collection("petitions").doc(id).delete();
+            }
+        })
     })
 }
+})})
+}
 
-const form = document.getElementById('form');
+/*const form = document.getElementById('form');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -319,7 +333,6 @@ let counter = time;
                 admno: ad,
                 times: time,
                 dept: dept,
-                emailct:0,
             })}).then(() => {
                console.log('petis added');
             }).catch(err => {
@@ -334,7 +347,7 @@ let counter = time;
         }
     })
     sideNav1.style.left = "-350px";
-})
+})*/
 auth.onAuthStateChanged(user => {
     if (user) {
         fs.collection("petitions").onSnapshot((snapshot) => {
@@ -351,6 +364,3 @@ auth.onAuthStateChanged(user => {
         })
     }
 }) 
-function twitter(param){
-    console.log(param);
-}

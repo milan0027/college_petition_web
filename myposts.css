@@ -68,46 +68,6 @@ nav ul li a .fa{
     cursor: pointer;
     
 }
-#button1{
-    width: 250px;
-    position: fixed;
-    left: 45px;
-    top: 75px;
-    height: 40px;
-    font-weight: 600;
-    font-size: 17px;
-    color: white;
-    background-color: black;
-    border: 2px solid black;
-    cursor: pointer;
-    transition: transform .5s;
-    
-   
-}
-#button1:hover{
-    backface-visibility: hidden;
-    transform: translateZ(0) scale(1.1);
-}
-#sideNav1{
-    width: 350px;
-    height: 100vh;
-    position: fixed;
-    left: -350px;
-    top: 0;
-    background: black;
-    
-    transition: 0.6s;
-
-}
-
-
-
-.error {
-    color: red;
-    font-size: 14px;
-    font-weight: 600;
-}
-
 .peti-container {
     display: flex;
     flex-direction: column;
@@ -117,12 +77,12 @@ nav ul li a .fa{
 
 .peti-box {
   
- 
+  
     max-width: 500px;
    max-height: fit-content;
     padding: 10px;
    transition: transform .2s;
-    background-color:#e4e4e4;
+    background-color: #e4e4e4;
     margin: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -219,7 +179,6 @@ border: 2px black;
 }
 .fb{
     transition: transform 0.2s;
-    width: 48px; height: 48px;
 
 }
 .fb:hover{
@@ -235,12 +194,3 @@ border: 2px black;
 .sharediv .modal-footer .btn{
     background-color:purple;
 }
-/*.link-tag{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}*/

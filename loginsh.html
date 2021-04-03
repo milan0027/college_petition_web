@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>LoginPage share</title> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+  
+  
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">PetISM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="col-auto">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="signupsh.html">Sign Up</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Help
+            </a>
+            
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          
+              <li><a class="dropdown-item" href="#">FAQS</a></li>
+              
+            
+              <li><a class="dropdown-item" href="#">How to Use</a></li>
+              
+              
+              <li><a class="dropdown-item" href="#">Contact Us</a></li>
+              
+              <li> <a class="dropdown-item" href="#">Terms & Conditions</a></li>
+              
+        </ul>
+        
+      
+         
+      </li>
+      </ul>
+        
+      </div>
+    </div>
+    </div>
+  </nav>
+  
+ 
+
+  
+
+<div class="loginbox">
+  <div class="maindiv">
+             <h1>Login Form</h1>
+             
+             <br>
+                 <input type="email"  id="email_field" placeholder="Email"><br>
+               
+                
+                 <input type="password" id="password_field" placeholder="Password"><br>
+                
+               <button onclick="login()" class="btn btn-success btn-block">Submit</button>
+            
+              </div>
+
+            </div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDsLBGcVs4LyGKfLyTcE9dq8LSBZ-5nDzo",
+    authDomain: "petism1.firebaseapp.com",
+    databaseURL: "https://petism1-default-rtdb.firebaseio.com",
+    projectId: "petism1",
+    storageBucket: "petism1.appspot.com",
+    messagingSenderId: "102995564729",
+    appId: "1:102995564729:web:a9c0dff2756ee94e212368",
+    measurementId: "G-G5Q4KGV1WG"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="loginsh.js"></script>
+
+
+</body>
+</html>

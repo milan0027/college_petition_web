@@ -1,4 +1,3 @@
-
 function login()
 {
 
@@ -6,10 +5,10 @@ function login()
   var userPass = document.getElementById("password_field").value;
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function() {
-   
+    
     var id=firebase.auth().currentUser.uid;
-   
-    window.location.replace('userpage.html');
+    var diurl=localStorage.getItem('shurl');
+    window.location.replace(diurl);
    
     
    }).catch(function(error){
@@ -23,4 +22,3 @@ window.alert("error: "+errorMsg)
 function logout(){
   firebase.auth().signOut();
 }
-

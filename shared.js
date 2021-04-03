@@ -1,25 +1,60 @@
-var depart=["None","Academics","Sports","Library","Hostel","Mess"];
+
+localStorage.setItem('shurl', window.location.href);
+
+
+
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+    var userId=auth.currentUser.uid;
+    firebase.database().ref('Users/'+userId).once('value').then(function(snapshot){
+     var fname=(snapshot.val() && snapshot.val().Username);
+    
+   
+     document.getElementById('fname').innerHTML="Hey, "+fname;
+     
+    });
+}
+    else {
+     alert('you are not logged in, kindly login again to continue');
+ location = "loginsh.html";
+    }
+})
+
+function logout() {
+auth.signOut();
+}
+var ha=window.location.hash;
+ha=ha.substring(1);
+if(ha!="")
+{
+var docRefe = fs.collection("petitions").doc(ha);
+docRefe.get().then((doc) => {
+    var depart=["None","Academics","Sports","Library","Hostel","Mess"];
 const petti = document.getElementById('peti-container');
 var deptmailid=["iitismdefault27@gmail.com","iitismacademics27@gmail.com","iitismsports27@gmail.com","iitismlibrary27@gmail.com","iitismhostel27@gmail.com","iitismmess27@gmail.com"];
 
-function renderData(individualDoc) {
+
+
+
 
     let parentDiv = document.createElement("div");
     parentDiv.className = "container peti-box";
-    parentDiv.setAttribute('data-id', individualDoc.id);
+    
+    parentDiv.setAttribute('data-id', doc.data().id);
 
     let yname = document.createElement("div");
     yname.className="yesname yestag";
-    yname.textContent = individualDoc.data().uname;
+    yname.textContent = doc.data().uname;
 
     let der=document.createElement("div");
-   var de=parseInt(individualDoc.data().dept);
+   var de=parseInt(doc.data().dept);
    der.className="yestag yestag2";
     der.textContent="#"+depart[de];
 
   let tim= document.createElement("div");
  
-   var tym=individualDoc.data().times;
+   var tym=doc.data().times;
    var dater=new Date(tym);
    
    tim.innerHTML="Posted on "+dater.getDate()+
@@ -31,18 +66,18 @@ function renderData(individualDoc) {
     
 
     let petDiv = document.createElement("div");
-    petDiv.textContent = individualDoc.data().petis;
+    petDiv.textContent = doc.data().petis;
     petDiv.className="yespet";
 
     let upv= document.createElement("div");
     upv.className="bttn btnupv";
-    var upt=individualDoc.data().upvote;
+    var upt=doc.data().upvote;
     upv.innerText=upt;
 
    
     let dpv= document.createElement("div");
     dpv.className="bttn btndpv";
-    var dpt=individualDoc.data().downvote;
+    var dpt=doc.data().downvote;
     dpv.innerText=dpt;
    
     let ub=document.createElement("button");
@@ -55,7 +90,7 @@ function renderData(individualDoc) {
 
     let j=document.createElement("i");
     var userlol=firebase.auth().currentUser.uid;
-    var docRef =fs.collection("petitions").doc(individualDoc.id).collection("likes").doc(userlol)
+    var docRef =fs.collection("petitions").doc(doc.data().id).collection("likes").doc(userlol)
     docRef.get().then((doc) => {
         if (doc.exists) {
             j.className="fa fa-thumbs-up bttn1 bttn4";
@@ -66,7 +101,7 @@ function renderData(individualDoc) {
     
 
     let k=document.createElement("i");
-    var docRef2 =fs.collection("petitions").doc(individualDoc.id).collection("dislikes").doc(userlol)
+    var docRef2 =fs.collection("petitions").doc(doc.data().id).collection("dislikes").doc(userlol)
     docRef2.get().then((doc) => {
         if (doc.exists) {
             k.className="fa fa-thumbs-down bttn2 bttn5";
@@ -74,31 +109,18 @@ function renderData(individualDoc) {
             k.className="fa fa-thumbs-down bttn2";
         }
     })
+  
+
     
-    var urlt=window.location.href;
-   
-    urlt=urlt.substring(0,urlt.length-13)+"shared.html%23";
-
-    var tweet="https://twitter.com/share?url="+urlt;
-    var wa="https://web.whatsapp.com/send?text="+urlt;
-    var tele="https://telegram.me/share/url?url="+urlt;
-   
-
-
-
-   let share=document.createElement("div");
+    let share=document.createElement("div");
     share.className="bttn btndpv sharediv";
     
-  
 
+    share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div><div class="modal-body"><a href="#"> <img src="icons8-facebook-48.png" class="fb"alt="facebook" style="width: 48px; height: 48px;"></a> <a href="#"> <img src="icons8-twitter-circled-48.png" class="fb" alt="twitter" style="width: 48px; height: 48px;"></a> <a href="#"> <img src="icons8-linkedin-48.png" class="fb" alt="linkedin" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
 
-
-
-
-  share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div> <div class="modal-body"><a href='+tweet+'><img src="icons8-twitter-circled-48.png" class="fb fbtw" alt="twitter" style="width: 48px; height: 48px;"></a><a href='+wa+'><img src="icons8-whatsapp-48.png" class="fb fbwa" alt="whatsapp" style="width: 48px; height: 48px;"></a><a href='+tele+'><img src="icons8-telegram-app-48.png" class="fb fbte" alt="Telegram" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
-
+   
    ub.appendChild(j);
-  
+    
   
     parentDiv.appendChild(yname);
     parentDiv.appendChild(der);
@@ -115,23 +137,9 @@ function renderData(individualDoc) {
     parentDiv.appendChild(share);
    
    
+   
     petti.insertBefore(parentDiv,petti.childNodes[0]);
 
-   /* share.addEventListener('click', e=> {
-
-        let id7 = e.target.parentElement.parentElement.getAttribute('data-id');
-        var upref = fs.collection("petitions").doc(id7);
-
-        var urlt=window.location.href;
-   
-        urlt=urlt.substring(0,urlt.length-13)+"shared.html%23";
-    
-        var tweet="https://twitter.com/share?url="+urlt;
-        var wa="https://web.whatsapp.com/send?text="+urlt;
-        var tele="https://telegram.me/share/url?url="+urlt;
-    share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div> <div class="modal-body"><a href='+tweet+'><img src="icons8-twitter-circled-48.png" class="fb fbtw" alt="twitter" style="width: 48px; height: 48px;"></a><a href='+wa+'><img src="icons8-whatsapp-48.png" class="fb fbwa" alt="whatsapp" style="width: 48px; height: 48px;"></a><a href='+tele+'><img src="icons8-telegram-app-48.png" class="fb fbte" alt="Telegram" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
-
-    })*/
 
     ub.addEventListener('click', e=> {
         
@@ -208,11 +216,9 @@ function renderData(individualDoc) {
             var petis1=doc.data().petis;
     
             var upvotes1=doc.data().upvote;
-
-           var emailcnt=doc.data().emailct;
+            var emailcnt=doc.data().emailct;
             if(emailcnt==0&&upvotes1>=5)
             {
-           
             Email.send({
                 Host: "smtp.gmail.com",
                 Username: "petism27@gmail.com",
@@ -231,8 +237,8 @@ function renderData(individualDoc) {
                     }
                 )
             }
-        })
-        
+            })
+    
       
 
     })
@@ -287,70 +293,12 @@ function renderData(individualDoc) {
                 })
             }
         })
-    }  
-    })
-}
-
-const form = document.getElementById('form');
-
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    const petis = form['exampleFormControlTextarea1'].value;
-    const dept = form['deprt'].value;
-    let date = new Date();
-let time = date.getTime();
-let counter = time;
-    let id =counter;
-    form.reset();
-    
-    auth.onAuthStateChanged(user => {
-        var userI=firebase.auth().currentUser.uid;
-        if (user) {
-            db.ref('Users/'+userI).once('value').then(function(snapshot){
-                var fname=(snapshot.val() && snapshot.val().Username);
-                var ad=(snapshot.val() && snapshot.val().admissionno);
-               
-            fs.collection("petitions").doc('_' + id).set({
-                id: '_' + id,
-                petis,
-                upvote: 0,
-                downvote: 0,
-                uname: fname,
-                admno: ad,
-                times: time,
-                dept: dept,
-                emailct:0,
-            })}).then(() => {
-               console.log('petis added');
-            }).catch(err => {
-                console.log(err.message);
-            })
-
-            fs.collection("petitions").doc('_' + id).collection("owner").doc(userI).set({
-                uidowner: userI,
-            })
-
-
-        }
-    })
-    sideNav1.style.left = "-350px";
-})
-auth.onAuthStateChanged(user => {
-    if (user) {
-        fs.collection("petitions").onSnapshot((snapshot) => {
-            let changes = snapshot.docChanges();
-            changes.forEach(change => {
-                if (change.type == "added") {
-                    renderData(change.doc);
-                }
-               else if (change.type == 'removed') {
-                   let li =petti.querySelector('[data-id=' + change.doc.id + ']');
-                    petti.removeChild(li);
-                }
-            })
-        })
     }
-}) 
-function twitter(param){
-    console.log(param);
+      
+        
+        
+    })
+
+})
 }
+
