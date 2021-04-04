@@ -1,5 +1,5 @@
 body {
-  background-image: url('123456.jpeg');
+  background-image: url('123456-02.jpeg');
   background-size:cover;
 }
 .navbar-brand{ 
@@ -20,53 +20,20 @@ body {
 
 
   
-  .output {
-    text-align:center;
+  .para {
+   text-align: center;
     font-family: 'Source Code Pro', monospace;
-    color:white;
-   
-  }
-  
-  /* Cursor Styling */
-  
-  .cursor::after {
-    content:'';
-    display:inline-block;
-    margin-left:3px;
-    background-color:white;
-    animation-name:blink;
-    animation-duration:0.5s;
-    animation-iteration-count: infinite;
-  }
-  h1.cursor::after {
-    height:24px;
-    width:13px;
-  }
-  p.cursor::after {
-    height:13px;
-    width:6px;
-  }
-  
-  @keyframes blink {
-    0% {
-      opacity:1;
-    }
-    49% {
-      opacity:1;
-    }
-    50% {
-      opacity:0;
-    }
-    100% {
-      opacity:0;
-    }
-  }
-  .flex-parent {
-    display: flex;
-  }
-  
-  .jc-center {
-    justify-content: center;
+   color: wheat;
+    margin-top: 50px;
+    font-size: 55px;
+   margin-bottom: 30px;
+   background-color: rgba(32, 28, 28, 0.5);
+  padding-left: 25px;
+  padding-right: 25px;
+  max-width: fit-content; 
+  border-radius: 40px;
+  margin-left: auto;
+  margin-right: auto;
   }
   
   .flex-parent {
@@ -77,22 +44,23 @@ body {
     justify-content: center;
   }
   
-  
+ 
   
   .maindiv1 button{
     background-color:  rgba(32, 28, 28, 0.5);
     color:white; 
-    border: 2px solid black;
+    border-style: none;
   text-decoration: none;
   font-size:large;
     font-weight:500;
-    border-radius: 5px;
+    border-radius: 36px;
     padding: 15px;
     display:inline-block;
     width: 300px;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
+   
   }
   
   .maindiv1 button:hover {
@@ -107,8 +75,8 @@ body {
     text-decoration: none;
     font-size:large;
     font-weight:500;
-    border: 2px solid black;
-    border-radius: 5px;
+   border-style: none;
+    border-radius: 36px;
     padding: 15px;
     display:inline-block;
     width: 300px;

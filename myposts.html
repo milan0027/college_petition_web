@@ -112,6 +112,10 @@
         </script>
     <script src="myposts.js"></script>
     <script type="text/javascript">
+    
+    function logout() {
+    auth.signOut();
+}
         auth.onAuthStateChanged(user => {
            if (user) {
            var userId=auth.currentUser.uid;
@@ -124,14 +128,11 @@
            });
        }
            else {
-            alert('you were logged out, login again to continue');
+           
         location = "login.html";
            }
        })
 
-       function logout() {
-    auth.signOut();
-}
            </script>
      
   </body>
