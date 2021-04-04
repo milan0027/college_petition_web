@@ -53,6 +53,33 @@
     </div>
       </nav>
         <img src="menubar.jpg" id="menuBtn">
+
+
+        <div class="container peti-container" id="peti-container">
+		 
+          <div class="container peti-box">1. To add a new petition, click "WRITE A PETITION" button on the top left corner of the page.
+            A text-editor will slide in. Type there, tag the concerned authority and just POST it.</div>
+            <div class="container peti-box">2. To close the editor, simply click on the "WRITE A PETITION" button again.</div>
+            <div class="container peti-box">3. To Share a petiton, hover over "SHARE" and then click on the social media on which you want to share.</div>
+          <div class="container peti-box">4. To view your profile information, click the black "NAV BUTTON" with white stripes on the top right corner of the page. A menu will slide in and then click on My Profile.</div>
+          <div class="container peti-box">5. To view your petitons >> NAV BUTTON >> My Petitions</div>
+          <div class="container peti-box">6. To delete your petition >> NAV BUTTON >> My Petitions >> Select the petition to be deleted >> Click Trash Icon</div>
+          <div class="container peti-box">7. To view Administration Info >> NAV BUTTON >> Administration Info </div>
+          <div class="container peti-box">8. To Go Back to HOME PAGE, simply click on "HOME PAGE"  appearing on the top navbar.</div>
+          <div class="container peti-box">9. To Log Out >> NAV BUTTON >> Log Out</div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -100,6 +127,9 @@
         </script>
     
     <script type="text/javascript">
+    function logout() {
+    auth.signOut();
+}
         auth.onAuthStateChanged(user => {
            if (user) {
            var userId=auth.currentUser.uid;

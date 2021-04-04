@@ -1,5 +1,5 @@
 body {
-  background-image: url('1169815.jpg');
+  background-image: url('123456.jpeg');
   background-size:cover;
 }
 .navbar-brand{ 
@@ -24,9 +24,7 @@ body {
     text-align:center;
     font-family: 'Source Code Pro', monospace;
     color:white;
-    h1 {
-      font-size:30px;
-    }
+   
   }
   
   /* Cursor Styling */
@@ -98,8 +96,8 @@ body {
   }
   
   .maindiv1 button:hover {
-    background-color: #4CAF50;
-    color:black;
+    background-color: #09b60f;
+    
    
     cursor: pointer;
   }
@@ -121,7 +119,7 @@ body {
   
   .maindiv2 button:hover {
     background-color:red;
-    color: black;
+  
    
     cursor: pointer;
   }

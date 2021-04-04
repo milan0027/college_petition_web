@@ -1,9 +1,8 @@
-
+//storing url of page to be used in case user was logged out
 localStorage.setItem('shurl', window.location.href);
 
 
-
-
+//checking if the user is signed in or not
 auth.onAuthStateChanged(user => {
     if (user) {
     var userId=auth.currentUser.uid;
@@ -16,19 +15,25 @@ auth.onAuthStateChanged(user => {
     });
 }
     else {
-    
- location = "loginsh.html";
- alert('you are not logged in, kindly login again to continue');
+    //this is a different login page which will take user to this page on logging in
+    location = "loginsh.html";
+    alert('you are not logged in, kindly login again to continue');
     }
 })
 
 function logout() {
 auth.signOut();
 }
+
+//getting hash of shared url
 var ha=window.location.hash;
+
+//on removing hash we get the doc id of the post
 ha=ha.substring(1);
 if(ha!="")
 {
+    //displaying the content of shared post
+    //rest all the things are same as that of userpage.js file
 var docRefe = fs.collection("petitions").doc(ha);
 docRefe.get().then((doc) => {
     var depart=["None","Academics","Sports","Library","Hostel","Mess"];

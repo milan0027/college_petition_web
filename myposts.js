@@ -3,10 +3,11 @@ const petti = document.getElementById('peti-container');
 var deptmailid=["iitismdefault27@gmail.com","iitismacademics27@gmail.com","iitismsports27@gmail.com","iitismlibrary27@gmail.com","iitismhostel27@gmail.com","iitismmess27@gmail.com"];
 
 
-
+//90% of the things here is same as that of userpae.js file
 function renderData(individualDoc) {
     auth.onAuthStateChanged(user => {
         const userlol=auth.currentUser.uid;
+        //checking every post on the database if the post was made by current user and only displaying them
     var docR =fs.collection("petitions").doc(individualDoc.id).collection("owner").doc(userlol)
     docR.get().then((doc) => {
         if (doc.exists) {
@@ -300,6 +301,7 @@ function renderData(individualDoc) {
         
     })
 
+    //deleting the post from database on clicking trash icon
     trash.addEventListener('click', e => {
         let id = e.target.parentElement.parentElement.getAttribute('data-id');
         auth.onAuthStateChanged(user => {
@@ -312,49 +314,7 @@ function renderData(individualDoc) {
 })})
 }
 
-/*const form = document.getElementById('form');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    const petis = form['exampleFormControlTextarea1'].value;
-    const dept = form['deprt'].value;
-    let date = new Date();
-let time = date.getTime();
-let counter = time;
-    let id =counter;
-    form.reset();
-    
-    auth.onAuthStateChanged(user => {
-        var userI=firebase.auth().currentUser.uid;
-        if (user) {
-            db.ref('Users/'+userI).once('value').then(function(snapshot){
-                var fname=(snapshot.val() && snapshot.val().Username);
-                var ad=(snapshot.val() && snapshot.val().admissionno);
-               
-            fs.collection("petitions").doc('_' + id).set({
-                id: '_' + id,
-                petis,
-                upvote: 0,
-                downvote: 0,
-                uname: fname,
-                admno: ad,
-                times: time,
-                dept: dept,
-            })}).then(() => {
-               console.log('petis added');
-            }).catch(err => {
-                console.log(err.message);
-            })
-
-            fs.collection("petitions").doc('_' + id).collection("owner").doc(userI).set({
-                uidowner: userI,
-            })
-
-
-        }
-    })
-    sideNav1.style.left = "-350px";
-})*/
 auth.onAuthStateChanged(user => {
     if (user) {
         fs.collection("petitions").onSnapshot((snapshot) => {

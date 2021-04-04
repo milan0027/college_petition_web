@@ -1,5 +1,10 @@
+//an array to fetch the authority name by their index
 var depart=["None","Academics","Sports","Library","Hostel","Mess"];
+
 const petti = document.getElementById('peti-container');
+
+//an array to store the respective email ids of the authorities
+// password of every id is asdfgh27#
 var deptmailid=["iitismdefault27@gmail.com","iitismacademics27@gmail.com","iitismsports27@gmail.com","iitismlibrary27@gmail.com","iitismhostel27@gmail.com","iitismmess27@gmail.com"];
 
 function renderData(individualDoc) {
@@ -8,20 +13,21 @@ function renderData(individualDoc) {
     parentDiv.className = "container peti-box";
     parentDiv.setAttribute('data-id', individualDoc.id);
 
+    //getting the name of the person who created petition
     let yname = document.createElement("div");
     yname.className="yesname yestag";
     yname.textContent = individualDoc.data().uname;
 
+    //getting the authority that he/she had tagged
     let der=document.createElement("div");
    var de=parseInt(individualDoc.data().dept);
    der.className="yestag yestag2";
     der.textContent="#"+depart[de];
 
+    //getting the time at which he/she posted
   let tim= document.createElement("div");
- 
    var tym=individualDoc.data().times;
-   var dater=new Date(tym);
-   
+   var dater=new Date(tym); 
    tim.innerHTML="Posted on "+dater.getDate()+
    "/"+(dater.getMonth()+1)+
    "/"+dater.getFullYear()+
@@ -30,29 +36,36 @@ function renderData(individualDoc) {
    ":"+dater.getSeconds();
     
 
+   //getting the petition text content
     let petDiv = document.createElement("div");
     petDiv.textContent = individualDoc.data().petis;
     petDiv.className="yespet";
 
+
+    //getting upvotes count on that petition
     let upv= document.createElement("div");
     upv.className="bttn btnupv bttnx";
     var upt=individualDoc.data().upvote;
     upv.innerText=upt;
 
-   
+   //getting downvotes count on that petition
     let dpv= document.createElement("div");
     dpv.className="bttn btndpv bttnx";
     var dpt=individualDoc.data().downvote;
     dpv.innerText=dpt;
    
+    //button to upvote
     let ub=document.createElement("button");
     ub.className="bttn btncl bttnx";
    
 
+    //button to downvote
     let dv= document.createElement("button");
     dv.className="bttn bttnx";
 
 
+    //checking if the user who is currently logged in has liked the post or not
+    //then assigning corresponding classname for button states active/inactive
     let j=document.createElement("i");
     var userlol=firebase.auth().currentUser.uid;
     var docRef =fs.collection("petitions").doc(individualDoc.id).collection("likes").doc(userlol)
@@ -64,7 +77,8 @@ function renderData(individualDoc) {
         }
     })
     
-
+   //checking if the user who is currently logged in has disliked the post or not
+   //then assigning corresponding classname for button states active/inactive
     let k=document.createElement("i");
     var docRef2 =fs.collection("petitions").doc(individualDoc.id).collection("dislikes").doc(userlol)
     docRef2.get().then((doc) => {
@@ -75,10 +89,14 @@ function renderData(individualDoc) {
         }
     })
     
+    //getting url of current page
     var urlt=window.location.href;
    
+    //trimming url and adding filename of shared post page
+    //also adding doc id for creating unique link to every petition
     urlt=urlt.substring(0,urlt.length-13)+"shared.html%23"+individualDoc.id;
 
+    //making share links for respective social medias
     var tweet="https://twitter.com/share?url="+urlt;
     var wa="https://web.whatsapp.com/send?text="+urlt;
     var tele="https://telegram.me/share/url?url="+urlt;
@@ -86,19 +104,17 @@ function renderData(individualDoc) {
 
 
 
+    //making a div for share feature
    let share=document.createElement("div");
     share.className=" wrapper bttnx";
-    
-  
 
-
-
-
-
+//this is a long line which has inner html for dropdown menu having buttons for social medias
  share.innerHTML='<ul><li>share <i class="fa fa-share" aria-hidden="true"></i><ul><li ><a href='+tweet+'><button class="fb" ><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</button></a></li><li ><a href='+wa+'><button class="fb" ><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp</button></a></li><li ><a href='+tele+'><button class="fb" ><i class="fa fa-telegram" aria-hidden="true"></i> Telegram</button></a></li></ul></li></ul>';
-   ub.appendChild(j);
-  
-  
+   
+ 
+ 
+//appending all the contents and placing them inside a container
+    ub.appendChild(j);
     parentDiv.appendChild(yname);
     parentDiv.appendChild(der);
    
@@ -114,25 +130,16 @@ function renderData(individualDoc) {
     parentDiv.appendChild(dpv);
     parentDiv.appendChild(dv);
     parentDiv.appendChild(share);
-   
+
+
+   //displaying all the petitions
     petti.insertBefore(parentDiv,petti.childNodes[0]);
 
-   /* share.addEventListener('click', e=> {
-
-        let id7 = e.target.parentElement.parentElement.getAttribute('data-id');
-        var upref = fs.collection("petitions").doc(id7);
-
-        var urlt=window.location.href;
    
-        urlt=urlt.substring(0,urlt.length-13)+"shared.html%23";
-    
-        var tweet="https://twitter.com/share?url="+urlt;
-        var wa="https://web.whatsapp.com/send?text="+urlt;
-        var tele="https://telegram.me/share/url?url="+urlt;
-    share.innerHTML='<a type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">share <i class="fa fa-share" aria-hidden="true"></i></a> <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="staticBackdropLabel">Share On</h5> </div> <div class="modal-body"><a href='+tweet+'><img src="icons8-twitter-circled-48.png" class="fb fbtw" alt="twitter" style="width: 48px; height: 48px;"></a><a href='+wa+'><img src="icons8-whatsapp-48.png" class="fb fbwa" alt="whatsapp" style="width: 48px; height: 48px;"></a><a href='+tele+'><img src="icons8-telegram-app-48.png" class="fb fbte" alt="Telegram" style="width: 48px; height: 48px;"></a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
 
-    })*/
-
+    /*on clicking like button like count is updated on firebase database
+    if the it is already liked then like count is reduced by one and button state is also changed to inactive
+    by changing class bttn4*/
     ub.addEventListener('click', e=> {
         
        
@@ -165,7 +172,7 @@ function renderData(individualDoc) {
                 var userk=firebase.auth().currentUser.uid;
                 if (user) {
                   
-                       
+                       //deleting uid of user on reversing the liked state
                     fs.collection("petitions").doc(id5).collection("likes").doc(userk).delete().then(() => {
                         console.log("Document successfully deleted!");
                     }).catch((error) => {
@@ -184,7 +191,7 @@ function renderData(individualDoc) {
             var userL=firebase.auth().currentUser.uid;
             if (user) {
               
-                   
+                  //adding uid of user who liked the post 
                 fs.collection("petitions").doc(id5).collection("likes").doc(userL).set({
                   userLi: userL,
                 }).then(() => {
@@ -210,14 +217,14 @@ function renderData(individualDoc) {
             var upvotes1=doc.data().upvote;
 
            var emailcnt=doc.data().emailct;
-            if(emailcnt==0&&upvotes1>=5)
+            if(emailcnt==0&&upvotes1>=5) //checkng if likes count crossed limit of 5
             {
-           
+           //sending email 
             Email.send({
                 Host: "smtp.gmail.com",
                 Username: "petism27@gmail.com",
                 Password: "asdfgh27#",
-                To: deptmailid[dept1],
+                To: deptmailid[dept1], //fetching email of respective authority
                 From: "petism27@gmail.com",
                 Subject: "Alert for an important issue",
                 Body: "Respected Sir/Ma'am, A petition has been posted on PetISM by "+name1+", which reads as: "+"\""+petis1+"\""+". It is kindly requested to look into the matter as soon as possible.",
@@ -227,7 +234,7 @@ function renderData(individualDoc) {
                 });
                 docRef.update(
                     {
-                        emailct:1,
+                        emailct:1, //updating email count to 1 so that emails are not sent repeatedly
                     }
                 )
             }
@@ -237,6 +244,7 @@ function renderData(individualDoc) {
 
     })
 
+    //doing similar stuffs for downvote too as that for upvotes
     dv.addEventListener('click', e=> {
          
         let id2 = e.target.parentElement.parentElement.getAttribute('data-id');
@@ -255,7 +263,7 @@ function renderData(individualDoc) {
                 var userk2=firebase.auth().currentUser.uid;
                 if (user) {
                   
-                       
+                      //deleting the stored uid of user on reversing the disliked state 
                     fs.collection("petitions").doc(id2).collection("dislikes").doc(userk2).delete().then(() => {
                         console.log("Document successfully deleted!");
                     }).catch((error) => {
@@ -277,7 +285,7 @@ function renderData(individualDoc) {
             var userL2=firebase.auth().currentUser.uid;
             if (user) {
               
-                   
+                  // adding uid of user who disliked the post 
                 fs.collection("petitions").doc(id2).collection("dislikes").doc(userL2).set({
                   userLi2: userL2,
                 }).then(() => {
@@ -291,6 +299,7 @@ function renderData(individualDoc) {
     })
 }
 
+//fetching contents of petition form
 const form = document.getElementById('form');
 
 form.addEventListener('submit', e => {
@@ -298,8 +307,8 @@ form.addEventListener('submit', e => {
     const petis = form['exampleFormControlTextarea1'].value;
     const dept = form['deprt'].value;
     let date = new Date();
-let time = date.getTime();
-let counter = time;
+    let time = date.getTime();
+    let counter = time;
     let id =counter;
     form.reset();
     
@@ -309,7 +318,8 @@ let counter = time;
             db.ref('Users/'+userI).once('value').then(function(snapshot){
                 var fname=(snapshot.val() && snapshot.val().Username);
                 var ad=(snapshot.val() && snapshot.val().admissionno);
-               
+
+            //setting values of different parameters to be displayed on petition 
             fs.collection("petitions").doc('_' + id).set({
                 id: '_' + id,
                 petis,
@@ -341,6 +351,9 @@ let counter = time;
     })
     sideNav1.style.left = "-350px";
 })
+
+//realtime listeners for updating content on home page as soon as any petition is added or deleted
+//changes are made instantly
 auth.onAuthStateChanged(user => {
     if (user) {
         fs.collection("petitions").onSnapshot((snapshot) => {
@@ -357,6 +370,3 @@ auth.onAuthStateChanged(user => {
         })
     }
 }) 
-function twitter(param){
-    console.log(param);
-}
