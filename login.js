@@ -9,7 +9,7 @@ function login()
    
     var id=firebase.auth().currentUser.uid;
    
-    window.location.replace('userpage.html');
+    window.location.assign('userpage.html');
    
     
    }).catch(function(error){

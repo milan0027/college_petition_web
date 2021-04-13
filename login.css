@@ -1,5 +1,5 @@
 body{
-    background: url('112233.jpg');
+    background: url('123456-02.jpeg');
     background-size: cover;
     }
     .navbar-brand{ 
@@ -30,6 +30,7 @@ body{
         position: absolute;
         transform: translate(-50%, -50%);
         box-sizing: border-box;
+        margin-top: 56px;
 
       }
 .maindiv input{
@@ -38,7 +39,7 @@ display: block;
 padding: 10px;
 margin-left: auto;
 margin-right:auto;
-
+outline: none;
 }
 .maindiv button{
     width:80%;
@@ -47,3 +48,17 @@ margin-right:auto;
 h1{
     text-align:center;
 }
+.btn-success{
+    background-color: black !important;
+    border: none !important;
+    border-radius: 25px;
+    
+    }
+.btn-success:hover{
+        background-color:orangered !important;
+        border: none !important;
+    } 
+    .btn-success:focus{
+        background-color:purple !important;
+        border: none !important;
+    } 
