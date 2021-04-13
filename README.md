@@ -1,4 +1,4 @@
-# college_petiton_web
+# college_petition_web
 
 * Start the website by opening intro.html file.
 * Some pages may take upto 10-12 seconds to load, depending upon internet speed, so it is requested to wait for a while until page loads.
