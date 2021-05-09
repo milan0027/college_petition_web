@@ -8,7 +8,7 @@ function login()
     
     var id=firebase.auth().currentUser.uid;
     var diurl=localStorage.getItem('shurl');
-    window.location.replace(diurl);
+    window.location.assign(diurl);
    
     
    }).catch(function(error){

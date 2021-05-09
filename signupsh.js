@@ -24,7 +24,9 @@ function RegisterUser() {
       
      }).then(()=>{
 
-        window.location.assign('userpage.html');
+        var diurl=localStorage.getItem('shurl');
+        window.location.assign(diurl);
+   
        
      }).catch(err => {
         window.alert(err.message);
