@@ -273,6 +273,28 @@ var deptmailid=["iitismdefault27@gmail.com","iitismacademics27@gmail.com","iitis
 
         }
         else{
+            var upref11 = fs.collection("petitions").doc(id2);
+            if(  parentDiv.querySelector(".bttn1").classList.contains("bttn4"))
+            {
+                upref11.update({
+                    upvote: firebase.firestore.FieldValue.increment(-1)
+                });
+                parentDiv.querySelector(".btnupv").innerText=parseInt(upv.innerText)-1;
+                parentDiv.querySelector(".bttn1").classList.remove("bttn4");
+    
+                auth.onAuthStateChanged(user => {
+                    var userk123=firebase.auth().currentUser.uid;
+                    if (user) {
+                      
+                           //deleting uid of user on reversing the liked state
+                        fs.collection("petitions").doc(id2).collection("likes").doc(userk123).delete().then(() => {
+                            console.log("Document successfully deleted!");
+                        }).catch((error) => {
+                            console.error("Error removing document: ", error);
+                        });
+                    }
+                })         
+            }
         dpref.update({
             downvote: firebase.firestore.FieldValue.increment(1)
         });

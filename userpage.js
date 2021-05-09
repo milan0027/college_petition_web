@@ -187,6 +187,30 @@ function renderData(individualDoc) {
         parentDiv.querySelector(".btnupv").innerText=parseInt(upv.innerText)+1;
         parentDiv.querySelector(".bttn1").classList.add("bttn4");
 
+        var dpref1 = fs.collection("petitions").doc(id5);
+        if(  parentDiv.querySelector(".bttn2").classList.contains("bttn5"))
+        {
+            dpref1.update({
+                downvote: firebase.firestore.FieldValue.increment(-1)
+            });
+
+            parentDiv.querySelector(".btndpv").innerText=parseInt(dpv.innerText)-1;
+            parentDiv.querySelector(".bttn2").classList.remove("bttn5");
+
+            auth.onAuthStateChanged(user => {
+                var userk21=firebase.auth().currentUser.uid;
+                if (user) {
+                  
+                      //deleting the stored uid of user on reversing the disliked state 
+                    fs.collection("petitions").doc(id5).collection("dislikes").doc(userk21).delete().then(() => {
+                        console.log("Document successfully deleted!");
+                    }).catch((error) => {
+                        console.error("Error removing document: ", error);
+                    });
+                }
+            })         
+
+        }
         auth.onAuthStateChanged(user => {
             var userL=firebase.auth().currentUser.uid;
             if (user) {
@@ -274,6 +298,28 @@ function renderData(individualDoc) {
 
         }
         else{
+            var upref11 = fs.collection("petitions").doc(id2);
+            if(  parentDiv.querySelector(".bttn1").classList.contains("bttn4"))
+            {
+                upref11.update({
+                    upvote: firebase.firestore.FieldValue.increment(-1)
+                });
+                parentDiv.querySelector(".btnupv").innerText=parseInt(upv.innerText)-1;
+                parentDiv.querySelector(".bttn1").classList.remove("bttn4");
+    
+                auth.onAuthStateChanged(user => {
+                    var userk123=firebase.auth().currentUser.uid;
+                    if (user) {
+                      
+                           //deleting uid of user on reversing the liked state
+                        fs.collection("petitions").doc(id2).collection("likes").doc(userk123).delete().then(() => {
+                            console.log("Document successfully deleted!");
+                        }).catch((error) => {
+                            console.error("Error removing document: ", error);
+                        });
+                    }
+                })         
+            }
         dpref.update({
             downvote: firebase.firestore.FieldValue.increment(1)
         });
@@ -305,6 +351,13 @@ const form = document.getElementById('form');
 form.addEventListener('submit', e => {
     e.preventDefault();
     const petis = form['exampleFormControlTextarea1'].value;
+    if(petis.trim()=="")
+    {
+        alert("Please Fill Something");
+        form.reset();
+    }
+    else
+    {
     const dept = form['deprt'].value;
     let date = new Date();
     let time = date.getTime();
@@ -350,6 +403,7 @@ form.addEventListener('submit', e => {
         }
     })
     sideNav1.style.left = "-350px";
+}
 })
 
 //realtime listeners for updating content on home page as soon as any petition is added or deleted

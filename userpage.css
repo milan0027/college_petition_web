@@ -137,8 +137,7 @@ nav ul li a .fa{
     font-family: "Comic Sans MS";
     font-size:20px;
     font-weight: 525;
-
-
+    word-wrap: break-word;
 }
 .yestag{
    display:inline;
@@ -197,6 +196,7 @@ nav ul li a .fa{
     font-weight: 525;
     max-width: 330px;
     margin-left: 10px;
+    margin-top: 12px;
 
     
 }
