@@ -424,3 +424,18 @@ auth.onAuthStateChanged(user => {
         })
     }
 }) 
+var filt=document.getElementById('filt');
+filt.addEventListener('keyup', searchin);
+function searchin(e)
+{
+    var val=e.target.value.toUpperCase();
+    var naam=petti.getElementsByClassName('container peti-box');
+    Array.from(naam).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+        if(itemName.toUpperCase().indexOf(val) != -1){
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+}
